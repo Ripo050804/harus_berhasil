@@ -90,8 +90,9 @@ def download_and_load_model():
     
     # Load model TFLite — support tflite-runtime dan tensorflow
     try:
-        import tflite_runtime.interpreter as tflite
-        interpreter = tflite.Interpreter(model_path=model_path)
+        import tensorflow as tf
+
+        interpreter = tf.lite.Interpreter(model_path=model_path)
         interpreter.allocate_tensors()
         input_details = interpreter.get_input_details()
         output_details = interpreter.get_output_details()
